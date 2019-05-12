@@ -50,7 +50,7 @@ export class Api {
         .toPromise().then(response => {
             localStorage.setItem("home_data", JSON.stringify(response));
         }).then(a =>{
-            document.location.reload();
+            //document.location.reload();
         });
 
     }
