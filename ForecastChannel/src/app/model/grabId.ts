@@ -1,5 +1,4 @@
 import { Observable, throwError, Operator } from 'rxjs';
-import { readFileSync } from 'fs';
 import { HttpClient } from '@angular/common/http';
 
 export class grabid {
