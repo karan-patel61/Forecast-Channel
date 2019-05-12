@@ -13,6 +13,7 @@ import {Api} from './components/main/services/Api';
     AppComponent,
     MainComponent,
     ResultComponent
+    
   ],
   imports: [
     BrowserModule,

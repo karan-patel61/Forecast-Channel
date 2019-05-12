@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { grabid } from 'src/app/model/grabId';
-import { HttpClientModule, HttpClient, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-
+import {ResultComponent} from '../result/result.component';
 import {Api} from './services/Api';
 
 @Component({
@@ -33,7 +31,9 @@ export class MainComponent implements OnInit {
     this.search(split[0],split[1]);
 }
   search(city,country){
-    this.api.getId(city,country);
+    this.api.setCity(city);
+    this.api.setCountry(country);
+    this.api.getId(); 
     this.api.getData(localStorage.getItem("home_id"));
   }
 }
