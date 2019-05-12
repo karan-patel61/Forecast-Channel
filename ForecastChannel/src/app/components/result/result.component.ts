@@ -7,9 +7,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultComponent implements OnInit {
 
-  constructor() { }
+   a:any;
 
+  constructor() { 
+    this.a = localStorage.getItem("home_data")!=null;
+    //console.log(this.a);
+  }
+
+  getTemp(){
+    let json = JSON.parse(localStorage.getItem("home_data"));
+    return (json.main.temp);
+  }
+
+  getName(){
+    return localStorage.getItem("city")+" , "+localStorage.getItem("country");
+  }
   ngOnInit() {
+    
   }
 
 }
