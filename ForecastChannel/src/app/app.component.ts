@@ -7,4 +7,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ForecastChannel';
+  test = "Hello  world";
+  test1 = ["one","two","three","four"];
 }
