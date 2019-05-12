@@ -3,15 +3,15 @@
   <section class="hero is-dark is-fullheight">
     <section class="hero">
 
-      <div class="column is-offset-5" *ngIf="">
+      <div class="column is-offset-5" *ngIf="a == true">
 
           <li class="grid-item">
               <div class="card card-sunny">
                 <div class="sunny"></div>
               </div>
               <div class="status">
-                <p id="temp">71 &#8457;</p>
-                <strong id="city">Brampton</strong>
+                <p id="temp">{{getTemp()}}  &#8451;</p>
+                <strong id="city">{{getName()}}</strong>
               </div>
             </li>
 

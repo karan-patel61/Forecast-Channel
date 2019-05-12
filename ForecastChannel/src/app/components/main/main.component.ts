@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ResultComponent} from '../result/result.component';
 import {Api} from './services/Api';
+import { Data } from './services/Data';
 
 @Component({
   selector: 'app-main',
@@ -11,18 +12,18 @@ import {Api} from './services/Api';
 export class MainComponent implements OnInit {
 
   
-  constructor(private api:Api) { 
+  constructor(private api:Api, private display:Data) { 
       
   }
 
   ngOnInit() {
-
+    this.display.init();
   }
 
   init(){
     var obj = document.getElementById("loc") as HTMLSelectElement
-    //console.log(obj.value);
     this.nameSplit(obj.value);
+
 
   }
 
@@ -34,6 +35,5 @@ export class MainComponent implements OnInit {
     this.api.setCity(city);
     this.api.setCountry(country);
     this.api.getId(); 
-    this.api.getData(localStorage.getItem("home_id"));
   }
 }
