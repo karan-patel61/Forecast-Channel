@@ -1,34 +1,25 @@
 <div>
 
   <section class="hero is-dark is-fullheight">
-    <section class="hero">
+    
 
       <div class="column is-offset-5" *ngIf="a == true">
 
           <li class="grid-item">
-              <div class="card card-sunny">
-                <div class="sunny"></div>
+              <div id="conditionCard" class="card card-sunny">
+                <div id="condition" class="sunny"></div>
               </div>
               <div class="status">
                 <p id="temp">{{getTemp()}}  &#8451;</p>
                 <strong id="city">{{getName()}}</strong>
               </div>
+              <button id="add"> Save This City</button>
             </li>
 
 
       </div>
 
-    </section>
-    <div class="hero-head">
-
-    </div>
-
-    <div class="hero-body">
-      <div class="container has-text-centered">
-        <div class="column is-9">
-        </div>
-      </div>
-    </div>
+    
 
   </section>
 </div>

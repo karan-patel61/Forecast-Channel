@@ -1,0 +1,21 @@
+.cityContainer{
+    border: solid, white;
+     
+}
+.city-card{
+    background: white;
+    background-blend-mode: lighten;
+    border: solid,red;
+    border-radius: 25px;
+}
+.temp{
+    width: 25%;
+    height: auto;
+    margin: 3px;
+    color: black
+
+}
+.city-country{
+    width: 30%;
+    color: black
+}

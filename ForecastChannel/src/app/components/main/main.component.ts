@@ -30,10 +30,12 @@ export class MainComponent implements OnInit {
   nameSplit(name: string) {
     var split = name.split(",");
     this.search(split[0],split[1]);
+   
 }
   search(city,country){
     this.api.setCity(city);
     this.api.setCountry(country);
     this.api.getId(); 
+    
   }
 }

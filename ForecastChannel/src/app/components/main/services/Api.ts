@@ -10,6 +10,7 @@ export class Api {
     _name: string;
     private city_name: string;
     private country: string;
+    private condition: string;
     _ID: any;
     constructor(private httpClient: HttpClient){
 
@@ -29,11 +30,19 @@ export class Api {
 
     } 
 
+    setCondition(condition){
+        console.log(condition);
+        this.condition = condition;
+        localStorage.setItem("condition", this.condition);
+    }
+
     getId() {
 
         let obs1 = this.httpClient.get("https://openweathermap.org/data/2.5/find?q=" + this.city_name + ",%20" + this.country + "&units=metric&appid=b6907d289e10d714a6e88b30761fae22&_=1557631358810&units=metric")
         .toPromise().then(response => {
             var a = JSON.parse(JSON.stringify(response));
+            //setting the condition
+            this.setCondition(a.list['0'].weather['0'].main);
             localStorage.setItem("home_id", JSON.stringify(a.list['0'].id));
         }).then(a =>{
             this.getData(localStorage.getItem("home_id"));
