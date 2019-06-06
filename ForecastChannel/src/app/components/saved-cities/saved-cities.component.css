@@ -2,7 +2,7 @@
     border: solid, white;
      
 }
-.city-card{
+/* .city-card{
     background: white;
     background-blend-mode: lighten;
     border: solid,red;
@@ -18,4 +18,41 @@
 .city-country{
     width: 30%;
     color: black
+} */
+
+
+.temp{
+  margin-left: 10px;
+  color:red;
+  font-size:50px;
+}
+
+.city-country{
+  color:black;
+  font-size: 30px;
+}
+
+.city-card{
+  border: solid;
+  width:80%;
+  margin: auto;
+  border-radius: 25px;
+  text-align: center;
+}
+
+.delete{
+  float: right;
+  margin: 20px;
+  border-radius: 10px;
+  font-size: 15px;
+  width: 100px;
+  height: 20px;
+}
+
+button:hover{
+  color:white;
+  background-color: #ff6666;
+} 
+.has-text-danger{
+  font-size: 50px;
 }
