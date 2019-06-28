@@ -16,6 +16,9 @@ export class ResultComponent implements OnInit {
   constructor(private comp: SavedCitiesComponent) { 
     this.a = localStorage.getItem("home_data")!=null;
     this.cityData = [];
+    localStorage.setItem("arr_size", this.cityData.length);
+    
+   
     //console.log(this.a);
   }
 
@@ -25,22 +28,27 @@ export class ResultComponent implements OnInit {
   }
 
   addCity(){
+    console.log("Size of array(before):"+localStorage.getItem("arr_size"));
     var temp = this.getTemp().toString();
     var city = localStorage.getItem("city");
     var count = localStorage.getItem("country");
     this.cityData.push({"city":city,"country":count,"temp":temp});
     console.log(JSON.stringify(this.cityData));
+    var i;
+    var size = localStorage.getItem("arr_size");
+    for(i=0;i<size;i++){
+      console.log("First element in local storage"+localStorage.getItem("arr_"+i));
+    }
+    
     this.save(this.cityData);
     
   }
 
+  //saving a new city to the Local Storage
   save(arr){
     var i;
     localStorage.setItem("arr_size", arr.length);
     for(i=0;i<arr.length;i++){
-      // localStorage.setItem('arr_'+i, arr[i]);
-      // var added = localStorage.getItem("arr_"+i.toString);
-      // var dataAdded = JSON.parse(JSON.stringify(added));
       var add = JSON.stringify(arr[i]);
       localStorage.setItem("arr_"+i,add);
       console.log(localStorage.getItem("arr_"+i));
@@ -99,6 +107,15 @@ export class ResultComponent implements OnInit {
       document.getElementById("conditionCard").classList.add("card-storm");
       document.getElementById("condition").classList.add("storm");
     }
+    else if(c=== "Clear"){
+      //change this to the Sunny card
+      console.log(document.getElementById("condition"));
+      document.getElementById("conditionCard").removeAttribute("class");
+      document.getElementById("condition").removeAttribute("class");
+      document.getElementById("conditionCard").classList.add("card");
+      document.getElementById("conditionCard").classList.add("card-sunny");
+      document.getElementById("condition").classList.add("sunny");
+    }
   }
 
   changeCard(condition){
@@ -106,7 +123,8 @@ export class ResultComponent implements OnInit {
   }
 
   ngOnInit() {
-    
+    console.log("This is the city data length: "+this.cityData.length);
+    console.log("This is the local arr length: "+localStorage.getItem("arr_size"));
   }
 
 }

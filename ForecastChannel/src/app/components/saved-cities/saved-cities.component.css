@@ -43,6 +43,7 @@
 .delete{
   float: right;
   margin: 20px;
+  background: rgba(107, 228, 186, 0.2);
   border-radius: 10px;
   font-size: 15px;
   width: 100px;
@@ -53,6 +54,3 @@ button:hover{
   color:white;
   background-color: #ff6666;
 } 
-.has-text-danger{
-  font-size: 50px;
-}
