@@ -26,7 +26,7 @@ import { SavedCitiesComponent } from './components/saved-cities/saved-cities.com
     HttpClientModule
     
   ],
-  providers: [Api,Data],
+  providers: [Api, Data],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

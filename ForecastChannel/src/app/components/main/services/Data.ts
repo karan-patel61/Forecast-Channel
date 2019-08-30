@@ -5,6 +5,7 @@ export class Data {
 
     _
     constructor(){
+        
     }
         
     init(){
