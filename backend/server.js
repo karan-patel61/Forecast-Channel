@@ -10,7 +10,7 @@ const router = express.router;
 //Connect to Mongo
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb://student:mongodb97@forecastchannel-shard-00-00-97wnn.mongodb.net:27017,forecastchannel-shard-00-01-97wnn.mongodb.net:27017,forecastchannel-shard-00-02-97wnn.mongodb.net:27017/test?ssl=true&replicaSet=ForecastChannel-shard-0&authSource=admin&retryWrites=true&w=majority";
+const uri = "mongodb://student:<password>@forecastchannel-shard-00-00-97wnn.mongodb.net:27017,forecastchannel-shard-00-01-97wnn.mongodb.net:27017,forecastchannel-shard-00-02-97wnn.mongodb.net:27017/test?ssl=true&replicaSet=ForecastChannel-shard-0&authSource=admin&retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
   const collection = client.db("weather_data").collection("city");
