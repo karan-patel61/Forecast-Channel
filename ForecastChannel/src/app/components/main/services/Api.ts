@@ -26,18 +26,19 @@ export class Api {
     setCountry(_country){
         console.log(_country);
         this.country = _country;
-        localStorage.setItem("country",this.country);
+        localStorage.setItem('country', this.country);
 
     } 
 
     setCondition(condition){
         console.log(condition);
         this.condition = condition;
-        localStorage.setItem("condition", this.condition);
+        localStorage.setItem('condition', this.condition);
     }
 
     getId() {
 
+        // tslint:disable-next-line: max-line-length
         let obs1 = this.httpClient.get("https://openweathermap.org/data/2.5/find?q=" + this.city_name + ",%20" + this.country + "&units=metric&appid=b6907d289e10d714a6e88b30761fae22&_=1557631358810&units=metric")
         .toPromise().then(response => {
             var a = JSON.parse(JSON.stringify(response));
