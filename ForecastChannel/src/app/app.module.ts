@@ -10,6 +10,24 @@ import {Api} from './components/main/services/Api';
 import {Data} from './components/main/services/Data';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SavedCitiesComponent } from './components/saved-cities/saved-cities.component';
+import { SocialLoginModule, AuthServiceConfig } from "angularx-social-login";
+import { GoogleLoginProvider, FacebookLoginProvider } from "angularx-social-login";
+
+
+let config = new AuthServiceConfig([
+  {
+    id: GoogleLoginProvider.PROVIDER_ID,
+    provider: new GoogleLoginProvider("301354454691-6f2ltl9go2k32erev8adisoi26l7ka2j.apps.googleusercontent.com")
+  },
+  {
+    id: FacebookLoginProvider.PROVIDER_ID,
+    provider: new FacebookLoginProvider("Facebook-App-Id")
+  }
+]);
+ 
+export function provideConfig() {
+  return config;
+}
 
 @NgModule({
   declarations: [
@@ -23,10 +41,16 @@ import { SavedCitiesComponent } from './components/saved-cities/saved-cities.com
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    SocialLoginModule
     
   ],
-  providers: [Api, Data],
+  providers: [Api, Data,
+    {
+      provide: AuthServiceConfig,
+      useFactory: provideConfig
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

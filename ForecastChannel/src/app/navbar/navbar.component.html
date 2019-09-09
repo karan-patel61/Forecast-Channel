@@ -1,14 +1,31 @@
-<nav style="text-align: center">
-  
+<nav class="navbar" role="navigation" aria-label="main navigation" style="text-align: center">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      
+    </a>
+  </div>
+  <div id="navbarBasicExample" class="navbar-menu"  style="margin: auto">
+    <div class="navbar-start">
+        <a routerLink="/main" routerLinkActive="active" class="navbar-item">
+          Home
+        </a>
 
-  <div id="navbarBasicExample" class="navbar-menu">
-      <a routerLink="/main" routerLinkActive="active" class="navbar-item">
-        Home
-      </a>
+        <a routerLink="/saved-cities" routerLinkActive="active" class="navbar-item">
+          Saved Cities
+        </a>
+        
+    </div><!-- End of NAV-START -->
 
-      <a routerLink="/saved-cities" routerLinkActive="active" class="navbar-item">
-        Saved Cities
-      </a>
-
+    <div class="navbar-end">
+      <div  class="navbar-item" >
+        <a class="button is-primary" (click)= "loginClicked()">
+          Google Login
+        </a>
+        
+      </div>
+    </div><!-- End of NAV-END -->
   </div>
 </nav>
