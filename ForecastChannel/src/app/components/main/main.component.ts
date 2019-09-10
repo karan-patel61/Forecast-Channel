@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import {ResultComponent} from '../result/result.component';
 import {Api} from './services/Api';
 import { Data } from './services/Data';
+import { AuthService } from "angularx-social-login";
+import { SocialUser } from "angularx-social-login";
 
 @Component({
   selector: 'app-main',
@@ -11,13 +13,30 @@ import { Data } from './services/Data';
 
 export class MainComponent implements OnInit {
 
-  
-  constructor(private api:Api, private display:Data) { 
-      
-  }
+  private user: SocialUser;
+  private loggedIn: boolean;
+
+  constructor(private api:Api, private display:Data, private authService: AuthService) { }
 
   ngOnInit() {
+    var message = document.getElementById("login");
     this.display.init();
+    this.authService.authState.subscribe((user) => {
+      this.user = user;
+      this.loggedIn = (user != null);
+      if(this.loggedIn){
+        message.innerText = "Login Successful!";
+        message.classList.add("green");
+        console.log("User Login Sucessful!");
+      }
+      else{
+        message.innerText = "Not Logged In yet!";
+        message.classList.add("red");
+        console.log("User Must Login...");
+      }
+    });
+    
+    
   }
 
   init(){
