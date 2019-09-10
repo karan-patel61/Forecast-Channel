@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
-import { AppComponent } from '../app.component';
 @Component({
   selector: 'app-navbar',
-  providers: [AppComponent],
+  
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(private appComp: AppComponent) { }
+  constructor() { }
 
   ngOnInit() {
     document.addEventListener('DOMContentLoaded', () => {
@@ -38,9 +37,8 @@ export class NavbarComponent implements OnInit {
     });
   } // END OF ngInit()
 
-  loginClicked(){
-    this.appComp.signInWithGoogle();
-    console.log('Google button clicked!!');
-  }
+  
+
+
 
 }

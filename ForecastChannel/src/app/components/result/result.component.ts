@@ -107,7 +107,7 @@ export class ResultComponent implements OnInit {
     }
     else if(c=== 'Clear'){
       //change this to the Sunny card
-      console.log(document.getElementById('condition'));
+      //console.log(document.getElementById('condition'));
       document.getElementById('conditionCard').removeAttribute('class');
       document.getElementById('condition').removeAttribute('class');
       document.getElementById('conditionCard').classList.add('card');

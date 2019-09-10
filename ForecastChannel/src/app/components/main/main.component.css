@@ -15,3 +15,12 @@
     border-radius: 50px;
     border-color: green;
 }
+#login{
+    border-width: 5px;
+    border-radius: 50px;
+}
+
+.centre{
+    width: 50%;
+    margin: auto;
+}

@@ -4,9 +4,11 @@ import {Api} from './services/Api';
 import { Data } from './services/Data';
 import { AuthService } from "angularx-social-login";
 import { SocialUser } from "angularx-social-login";
+import { AppComponent } from '../../app.component';
 
 @Component({
   selector: 'app-main',
+  providers: [AppComponent],
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
@@ -16,22 +18,33 @@ export class MainComponent implements OnInit {
   private user: SocialUser;
   private loggedIn: boolean;
 
-  constructor(private api:Api, private display:Data, private authService: AuthService) { }
+  constructor(private api:Api, private display:Data, private authService: AuthService, private appComp: AppComponent) { }
 
   ngOnInit() {
-    var message = document.getElementById("login");
+    var loginDiv = document.getElementById("login");
+    var loginMsg = document.getElementById("loginMessage");
+    var loginButton = document.getElementById("googleSignIn");
+    var logoutButton = document.getElementById("googleSignOut");
     this.display.init();
     this.authService.authState.subscribe((user) => {
       this.user = user;
       this.loggedIn = (user != null);
       if(this.loggedIn){
-        message.innerText = "Login Successful!";
-        message.classList.add("green");
+        loginMsg.innerText = "Login Successful!";
+        loginDiv.classList.add("green");
+        loginButton.style.display = "none";
+        logoutButton.style.display = "block";
+        logoutButton.style.width = "50%";
+        logoutButton.style.margin = "auto";
         console.log("User Login Sucessful!");
       }
       else{
-        message.innerText = "Not Logged In yet!";
-        message.classList.add("red");
+        loginMsg.innerText = "Not Logged In yet!";
+        loginDiv.classList.add("red");
+        loginButton.style.display = "block";
+        logoutButton.style.display = "none";
+        loginButton.style.width = "50%";
+        loginButton.style.margin = "auto";
         console.log("User Must Login...");
       }
     });
@@ -39,11 +52,20 @@ export class MainComponent implements OnInit {
     
   }
 
+  googleLogin(){
+    this.appComp.signInWithGoogle();
+    console.log('Google button clicked!!');
+    
+  }
+
+  signOut(){
+    this.appComp.signOut();
+    console.log('Successfully Logged Out!');
+  }
+
   init(){
     var obj = document.getElementById("loc") as HTMLSelectElement
     this.nameSplit(obj.value);
-
-
   }
 
   nameSplit(name: string) {
