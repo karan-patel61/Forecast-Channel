@@ -1,0 +1,8 @@
+.not{
+    text-align: center; 
+    text-decoration: underline; 
+    border: solid;
+    border-width: 5px;
+    border-radius: 50px;
+    border-color: red;
+}
