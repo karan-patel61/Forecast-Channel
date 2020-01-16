@@ -1,6 +1,11 @@
 <div>
-  <div id="login" style="width: 50%;height: auto; margin:auto; text-align: center">
+  <div id="login" style="width: 90%;height: auto; margin:auto; text-align: center">
     <p id="loginMessage" >Not Logged In yet!</p>
+    <img id="userImg" src="{{user.photoUrl}}" style="width: 200px;height:200px">
+    <div>
+      <h4 id = "userName">{{ user.name }}</h4>
+      <p id = "userEmail">{{ user.email }}</p>
+    </div>
     <div id="buttons" style="margin-top: 10px; margin-bottom: 10px;">
       <a id="googleSignIn" class="button is-primary" style="margin-right:5px" (click)= "googleLogin()">
         Google Login

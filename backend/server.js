@@ -1,6 +1,15 @@
-const express = require('express');
-const app = express();
-const router = express.router;
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var http = require('http');
+var app = express();
+var path = require('path');
+app.use(express.static(__dirname+"../ForecastChannel/src/app/components/main"));
+// const router = express.Router();
+// var cors = require('cors');
+// app.use(cors());
+
+
 
 
 
@@ -8,15 +17,26 @@ const router = express.router;
 //Connect to MongoDB
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb://student:<password>@forecastchannel-shard-00-00-97wnn.mongodb.net:27017,forecastchannel-shard-00-01-97wnn.mongodb.net:27017,forecastchannel-shard-00-02-97wnn.mongodb.net:27017/test?ssl=true&replicaSet=ForecastChannel-shard-0&authSource=admin&retryWrites=true&w=majority";
+const uri = "mongodb+srv://student:<password>@forecastchannel-97wnn.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
-  const collection = client.db("weather_data").collection("city");
+  if(!err){
+    console.log("MongoDB Connected...");
+  }
+  else{
+    console.log(JSON.stringify(err));
+  }
+  const collection = client.db("test").collection("devices");
   // perform actions on the collection object
-  console.log(collection);
   client.close();
 });
 
-app.get('/', (req,res) => res.render("../Forecast-Channel/src/app/components/main/main.component.html"));
+
+
+
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, console.log(`Server started on port ${PORT}`));
+app.use('/',function(req,res){
+  res.send('Connection made!');
+});
+//app.get('/', (req,res) => res.render("../ForecastChannel/src/app/components/main/main.component.html"));
+app.listen(PORT, () =>console.log(`Server started on port ${PORT}`));

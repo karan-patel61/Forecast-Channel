@@ -25,6 +25,7 @@ export class MainComponent implements OnInit {
     var loginMsg = document.getElementById("loginMessage");
     var loginButton = document.getElementById("googleSignIn");
     var logoutButton = document.getElementById("googleSignOut");
+    var img = document.getElementById("userImg");
     this.display.init();
     this.authService.authState.subscribe((user) => {
       this.user = user;
@@ -36,15 +37,23 @@ export class MainComponent implements OnInit {
         logoutButton.style.display = "block";
         logoutButton.style.width = "50%";
         logoutButton.style.margin = "auto";
+        // user.photoUrl = user.photoUrl;
+        // document.getElementById("userName").textContent = user.name;
+        // document.getElementById("userEmail").textContent = user.email;
         console.log("User Login Sucessful!");
       }
       else{
         loginMsg.innerText = "Not Logged In yet!";
+        loginDiv.classList.remove("green");
         loginDiv.classList.add("red");
         loginButton.style.display = "block";
-        logoutButton.style.display = "none";
         loginButton.style.width = "50%";
         loginButton.style.margin = "auto";
+        logoutButton.style.display = "none";
+        //user.photoUrl = "../../user.png";
+        // document.getElementById("userName").textContent = "";
+        // document.getElementById("userEmail").textContent = "";
+        
         console.log("User Must Login...");
       }
     });
