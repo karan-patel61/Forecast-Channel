@@ -17,8 +17,8 @@ app.use(express.static(__dirname+"../ForecastChannel/src/app/components/main"));
 //Connect to MongoDB
 
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://student:<password>@forecastchannel-97wnn.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri, { useNewUrlParser: true });
+const uri = "mongodb+srv://student:vtHCrsXtNwa3xzU6@forecastchannel-97wnn.mongodb.net/test?retryWrites=true&w=majority";
+const client = new MongoClient(uri,{useUnifiedTopology: true}, { useNewUrlParser: true });
 client.connect(err => {
   if(!err){
     console.log("MongoDB Connected...");
