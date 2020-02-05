@@ -1,36 +1,35 @@
 
+import "babel-polyfill";
 var express = require('express');
 var bodyParser = require('body-parser');
 var http = require('http');
 var app = express();
 var path = require('path');
-app.use(express.static(__dirname+"../ForecastChannel/src/app/components/main"));
-// const router = express.Router();
-// var cors = require('cors');
-// app.use(cors());
+const {MongoClient} = require('mongodb');
 
+async function main (){
+  const uri = "mongodb+srv://<userName>:<password>@forecast-97wnn.mongodb.net/test?retryWrites=true&w=majority";
 
-
-
-
-//DATABASE Config
-//Connect to MongoDB
-
-const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://student:vtHCrsXtNwa3xzU6@forecastchannel-97wnn.mongodb.net/test?retryWrites=true&w=majority";
-const client = new MongoClient(uri,{useUnifiedTopology: true}, { useNewUrlParser: true });
-client.connect(err => {
-  if(!err){
-    console.log("MongoDB Connected...");
+  const client = new MongoClient(uri,{ useNewUrlParser: true, useUnifiedTopology: true });
+  // connecting to the client returns a Promise
+  try{
+      await client.connect();
+      console.log("MongoDB Connected...")
+      await listDatabases(client);
+  }catch(e){
+    console.log(e);
+  }finally{
+    await client.close();
   }
-  else{
-    console.log(JSON.stringify(err));
-  }
-  const collection = client.db("test").collection("devices");
-  // perform actions on the collection object
-  client.close();
-});
+}
 
+//call the main 
+main().catch(console.err);
+async function listDatabases(client){
+  const dbList = await client.db().admin().listDatabases();
+  console.log("Databases:");
+  dbList.databases.forEach(db => console.log(` - ${db.name}`));
+};
 
 
 
