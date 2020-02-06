@@ -65,7 +65,7 @@ export class ResultComponent implements OnInit {
   getName(){
     this.setCondition();
     return localStorage.getItem('city')+' , '+localStorage.getItem('country');
-    
+
   }
   setCondition(){
     var c = localStorage.getItem('condition');
