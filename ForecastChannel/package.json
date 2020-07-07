@@ -21,7 +21,7 @@
     "@angular/router": "^7.2.16",
     "angularx-social-login": "^1.2.7",
     "core-js": "^2.6.11",
-    "npm": "^6.13.6",
+    "npm": "^6.14.6",
     "rxjs": "~6.3.3",
     "tslib": "^1.10.0",
     "zone.js": "~0.8.26"
